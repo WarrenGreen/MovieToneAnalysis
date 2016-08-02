@@ -4,7 +4,7 @@ import os
 import sys
 import glob
 
-#ffmpeg -i hotRod.mp4 -r 1 /Volumes/Untitled/Frames/HotRod/output-%0000d.png
+#ffmpeg -i <input video> -r 1 <output path>/output-%05d.png
 
 inputDir = sys.argv[1]
 outputDir = sys.argv[1]
@@ -17,7 +17,7 @@ outIm = Image.new("RGB", (frameCount, 2048))
 draw = ImageDraw.Draw(outIm)
 
 index = 0
-for filename in glob.glob(os.path.join(inputDir, '*.png')):
+for filename in sorted(glob.glob(os.path.join(inputDir, '*.png')):
 	im = Image.open(filename)
 	print filename
 	pix = im.load()
